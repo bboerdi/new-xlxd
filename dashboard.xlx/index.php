@@ -31,6 +31,8 @@ $Reflector->SetXMLFile($Service['XMLFile']);
 
 $Reflector->LoadXML();
 
+$ModulesCount = count($PageOptions['ModuleNames']);
+
 if ($CallingHome['Active']) {
 
     $CallHomeNow = false;
@@ -88,6 +90,11 @@ if ($CallingHome['Active']) {
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title><?php echo $Reflector->GetReflectorName(); ?> Reflector Dashboard</title>
     <link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+   <!--link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png"-->
+   <link rel="manifest" href="./site.webmanifest">
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -124,7 +131,7 @@ if ($CallingHome['Active']) {
             });
       }';
 
-        if (!isset($_GET['show']) || (($_GET['show'] != 'livequadnet') && ($_GET['show'] != 'reflectors') && ($_GET['show'] != 'interlinks'))) {
+        if (!isset($_GET['show']) || (($_GET['show'] != 'livequadnet') && ($_GET['show'] != 'reflectors') && ($_GET['show'] != 'interlinks') && ($_GET['show'] != 'modules') )) {
             echo '
       PageRefresh = setTimeout(ReloadPage, ' . $PageOptions['PageRefreshDelay'] . ');';
         }
@@ -170,16 +177,18 @@ if ($CallingHome['Active']) {
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li<?php echo (($_GET['show'] == "users") || ($_GET['show'] == "")) ? ' class="active"' : ''; ?>><a
-                            href="./index.php">Last Heard</a></li>
+                            href="./index.php">Last Heard | Zuletzt geh&ouml;rt</a></li>
+                <li<?php echo ($_GET['show'] == "modules") ? ' class="active"' : ''; ?>><a
+                            href="./index.php?show=modules">Modules | R&auml;ume (<?php echo $ModulesCount ?>)</a></li>
                 <li<?php echo ($_GET['show'] == "repeaters") ? ' class="active"' : ''; ?>><a
-                            href="./index.php?show=repeaters">Links (<?php echo $Reflector->NodeCount(); ?>)
+                            href="./index.php?show=repeaters">Repeater | Hotspots (<?php echo $Reflector->NodeCount(); ?>)
                         </a></li>
-                <li<?php echo ($_GET['show'] == "peers") ? ' class="active"' : ''; ?>><a href="./index.php?show=peers">Peers
+                <li<?php echo ($_GET['show'] == "peers") ? ' class="active"' : ''; ?>><a href="./index.php?show=peers">Peers | Verbindungen
                         (<?php echo $Reflector->PeerCount(); ?>)</a></li>
                 <li<?php echo ($_GET['show'] == "reflectors") ? ' class="active"' : ''; ?>><a
-                            href="./index.php?show=reflectors">Reflector List</a></li>
+                            href="./index.php?show=reflectors">Reflector List | International</a></li>
                 <li<?php echo ($_GET['show'] == "livequadnet") ? ' class="active"' : ''; ?>><a
-                            href="./index.php?show=livequadnet">QuadNet Live</a></li>
+                            href="./index.php?show=livequadnet">QuadNet Live | Roaming</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -198,6 +207,9 @@ if ($CallingHome['Active']) {
                 case 'users'      :
                     require_once("./pgs/users.php");
                     break;
+                case 'modules'    :
+		    require_once("./pgs/modules.php");
+		    break;				
                 case 'repeaters'  :
                     require_once("./pgs/repeaters.php");
                     break;
