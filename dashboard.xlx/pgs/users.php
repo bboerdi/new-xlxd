@@ -135,7 +135,7 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
         echo '</td>
    <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
    <td>' . $Reflector->Stations[$i]->GetSuffix() . '</td>
-   <td><a href="http://www.aprs.fi/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
+   <td><a href="https://aprsdirect.de/views/overview.php?c=' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
    <td>' . $Reflector->Stations[$i]->GetVia();
         if ($Reflector->Stations[$i]->GetPeer() != $Reflector->GetReflectorName()) {
             echo ' / ' . $Reflector->Stations[$i]->GetPeer();
@@ -192,7 +192,7 @@ for ($i=0;$i<count($Modules);$i++) {
        $Displayname = $Reflector->GetCallsignAndSuffixByID($Users[$j]);
       echo '
             <tr>
-               <td><a href="http://www.aprs.fi/'.$Displayname.'" class="pl" target="_blank">'.$Displayname.'</a> </td>
+               <td><a href="https://aprsdirect.de/views/overview.php?c='.$Displayname.'" class="pl" target="_blank">'.$Displayname.'</a> </td>
             </tr>';
       $UserCheckedArray[] = $Users[$j];
    }
