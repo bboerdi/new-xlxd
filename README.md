@@ -1,5 +1,14 @@
 ﻿# XLXD (or XRFD)
 
+Intro: This "dashboard release 3.x" is a fork from N7TAE's. Within this fork, only the dashboard was improved. The xlxd and ambed itself of new-xlxd is still the same!
+Changes to the dashboard of this version in short:
+  - Upgraded framework to bootstrap 5.2 (from 3.x)
+  - Darkmode
+  - Added Modules-Page (so list all active modules of the reflector with optional description of each module)
+  - Added infobox below the menu. e.g. for example info-box or help for newbies (see reflector: https://xlx409.boerdi.at)
+  - Added smartphone-compatibility
+  
+
 The XLX Multiprotocol Gateway Reflector Server is part of the software system for a Digital Voice Network. The sources are published under GPL Licenses.
 
 ## Introduction
