@@ -166,3 +166,4 @@ It has nothing to do with the regular YSFReflector network, hence you don’t ne
 
 - Copyright © 2016 Jean-Luc Deltombe LX3JL and Luc Engelmann LX1IQ
 - Copyright © 2020 Thomas A. Early N7TAE
+- Copyright © 2023 Robert Schneider OE7BOE (XLX-dasboard v3)
