@@ -1,7 +1,8 @@
+This version is a major releas for the XLX-dashboard!
 xlx db v3.0
   - Upgraded framework to bootstrap 5.2 (from 3.x)
   - Darkmode
-  - Added Modules-Page (so list all active modules of the reflector with optional description of each module)
+  - Added Modules-Page ("modules.php") (so list all active modules of the reflector with optional description of each module)
   - Added infobox below the menu. e.g. for example info-box or help for newbies (see reflector: https://xlx409.boerdi.at)
   - Added smartphone-compatibility
 
