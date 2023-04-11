@@ -18,13 +18,13 @@ if ($Result) {
 fclose($Result);
 ?>
 
-<table class="table table-striped table-hover">
+<table class="table table-sm table-dark table-striped table-hover text-white">
 	<tr class="table-center">
 		<th class="col-md-1">#</th>
 		<th class="col-md-2">XLX Peer</th>
-		<th class="col-md-2">Last Heard</th>
-		<th class="col-md-2">Linked for</th>
-		<th class="col-md-2">Protocol</th>
+		<th class="col-md-2">Zuletzt geh&ouml;rt</th>
+		<th class="col-md-2">Verbunden seit</th>
+		<th class="col-md-2">Protokoll</th>
 		<th class="col-md-1">Module</th><?php
 
 if ($PageOptions['PeerPage']['IPModus'] != 'HideIP') {
@@ -51,7 +51,7 @@ for ($i=0;$i<$Reflector->PeerCount();$i++) {
 		}
 	}
 	if ($Result && (trim($URL) != "")) {
-		echo '<td><a href="'.$URL.'" target="_blank" class="listinglink" title="Visit the Dashboard of&nbsp;'.$Name.'" style="text-decoration:none;color:#000000;">'.$Name.'</a></td>';
+		echo '<td><a href="'.$URL.'" target="_peer" class="listinglink text-white"  data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Besuche das Dashboard von '.$Name.'" title="Visit the Dashboard of&nbsp;'.$Name.'" style="text-decoration:none;color:#000000;">'.$Name.'</a></td>';
 	} else {
 		echo '<td>'.$Name.'</td>';
 	}

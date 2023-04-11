@@ -18,11 +18,11 @@ if ($Result) {
 fclose($Result);
 ?>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover text-white col-md-4">
 	<tr class="table-left">
-		<th class="col-md-1">Number | Nummer</th>
-		<th class="col-md-1">Module | Raum</th>
-		<th class="col-md-2">Information</th>
+		<th class="col-md-1 text-white">Modul | Raum</th>
+		<th class="col-md-1 text-white">Link-Befehl am Funkgerät</th>
+		<th class="col-md-2 text-white">Information</th>
 
  </tr>
 <?php
@@ -34,7 +34,7 @@ $ModulesCount = count($PageOptions['ModuleNames']);
 $cnt = 0;
 foreach($Modules as $ModuleKey => $ModuleInfo) {
   $cnt++;
-  echo "<tr><td>#$cnt</td><td>$ModuleKey</td><td>$ModuleInfo</td></tr>";
+  echo "<tr><td class='text-white'>$ModuleKey</td><td class='text-white'>UR-Call: \"$ReflectorName".$ModuleKey."L\"</td><td class='text-white'>$ModuleInfo</td></tr>";
 }
 
 

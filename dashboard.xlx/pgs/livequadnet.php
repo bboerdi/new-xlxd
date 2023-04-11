@@ -22,6 +22,8 @@
 //    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 // ----------------------------------------------------------------------------
 ?>
-<div width="100%" style="text-align:center;">
-   <iframe width="1250" height="800" src="https://irc-1.openquad.net/ics/" style="border:0px #000000 solid; margin-top:30px;" align="center"></iframe>
+<div width="100%" style="margin-left: 0px;">
+   <iframe id="myFrame" width="1250" height="756" src="https://irc-1.openquad.net/ics/" style="border-radius: 25px; background-color:#808080; border:0px #000000 solid; margin-top:30px; margin-bottom:50px;" align="center"></iframe>
 </div>
+
+

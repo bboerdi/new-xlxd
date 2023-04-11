@@ -1,12 +1,12 @@
-<table class="table table-striped table-hover">
+<table class="table table-sm table-dark table-striped table-hover text-white">
 	<tr class="table-center">
 		<th class="col-md-1">#</th>
-		<th class="col-md-1">Flag</th>
+		<th class="col-md-1">Land</th>
 		<th class="col-md-2">DV Station</th>
 		<th class="col-md-1">Band</th>
-		<th class="col-md-2">Last Heard</th>
-		<th class="col-md-2">Linked for</th>
-		<th class="col-md-1">Protocol</th>
+		<th class="col-md-2">Zuletzt geh&ouml;rt</th>
+		<th class="col-md-2">Verbunden seit</th>
+		<th class="col-md-1">Protokoll</th>
 		<th class="col-md-1">Module</th><?php
 
 if ($PageOptions['RepeatersPage']['IPModus'] != 'HideIP') {
@@ -26,12 +26,12 @@ for ($i=0;$i<$Reflector->NodeCount();$i++) {
 	<td>';
 	list ($Flag, $Name) = $Reflector->GetFlag($Reflector->Nodes[$i]->GetCallSign());
 	if (file_exists("./img/flags/".$Flag.".png")) {
-		echo '<a href="#" class="tip"><img src="./img/flags/'.$Flag.'.png" class="table-flag" alt="'.$Name.'"><span>'.$Name.'</span></a>';
+		echo '<a href="#" class="ps-1 nav-link" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="' . $Name . '"><img src="./img/flags/' . $Flag . '.png" alt="' . $Name . '"></a>';
 	}
 	echo '</td>
-	<td><a href="http://www.aprs.fi/'.$Reflector->Nodes[$i]->GetCallSign();
+	<td><a href="https://www.aprsdirect.de/views/overview.php?c='.$Reflector->Nodes[$i]->GetCallSign();
 	if ($Reflector->Nodes[$i]->GetSuffix() != "") echo '-'.$Reflector->Nodes[$i]->GetSuffix();
-	echo '" class="pl" target="_blank">'.$Reflector->Nodes[$i]->GetCallSign();
+	echo '" class="ps-1 nav-link" target="_aprs">'.$Reflector->Nodes[$i]->GetCallSign();
 	if ($Reflector->Nodes[$i]->GetSuffix() != "") { echo '-'.$Reflector->Nodes[$i]->GetSuffix(); }
 	echo '</a></td>
 	<td>';
@@ -48,7 +48,7 @@ for ($i=0;$i<$Reflector->NodeCount();$i++) {
 			case 'C' : echo '2m'; break;
 			case 'D' : echo 'Dongle'; break;
 			case 'G' : echo 'Internet-Gateway'; break;
-			default  : echo '';
+			default  : echo 'Hotspot';
 		}
 	}
 	echo '</td>

@@ -49,7 +49,7 @@ if (isset($_GET['do'])) {
 
 <div class="row">
    <div class="col-md-9">
-      <table class="table table-striped table-hover">
+      <table class="table table-sm table-dark table-striped table-hover">
 <?php
 if ($PageOptions['UserPage']['ShowFilter']) {
   echo '
@@ -60,8 +60,8 @@ if ($PageOptions['UserPage']['ShowFilter']) {
             <td align="left">
                <form name="frmFilterCallSign" method="post" action="./index.php">
                   <input type="hidden" name="do" value="SetFilter" />
-                  <input type="text" class="FilterField" value="'.$_SESSION['FilterCallSign'].'" name="txtSetCallsignFilter" placeholder="Callsign" onfocus="SuspendPageRefresh();" onblur="setTimeout(ReloadPage, '.$PageOptions['PageRefreshDelay'].');" />
-                  <input type="submit" value="Apply" class="FilterSubmit" />
+                  <input type="text" class="form-control-sm" value="'.$_SESSION['FilterCallSign'].'" name="txtSetCallsignFilter" placeholder="Rufzeichen" onfocus="SuspendPageRefresh();" onblur="setTimeout(ReloadPage, '.$PageOptions['PageRefreshDelay'].');" />
+                  <input type="submit" value="Filter" class="btn btn-outline-secondary btn-sm mb-1" />
                </form>
             </td>';
               if (($_SESSION['FilterModule'] != null) || ($_SESSION['FilterCallSign'] != null)) {
@@ -72,8 +72,8 @@ if ($PageOptions['UserPage']['ShowFilter']) {
             <td align="right" style="padding-right:3px;">
                <form name="frmFilterModule" method="post" action="./index.php">
                   <input type="hidden" name="do" value="SetFilter" />
-                  <input type="text" class="FilterField" value="'.$_SESSION['FilterModule'].'" name="txtSetModuleFilter" placeholder="Module" onfocus="SuspendPageRefresh();" onblur="setTimeout(ReloadPage, '.$PageOptions['PageRefreshDelay'].');" />
-                  <input type="submit" value="Apply" class="FilterSubmit" />
+                  <input type="text" class="form-control-sm" value="'.$_SESSION['FilterModule'].'" name="txtSetModuleFilter" placeholder="Raum" onfocus="SuspendPageRefresh();" onblur="setTimeout(ReloadPage, '.$PageOptions['PageRefreshDelay'].');" />
+                  <input type="submit" value="Filter" class="btn btn-outline-secondary btn-sm mb-1" />
                </form>
             </td>
       </table>
@@ -81,16 +81,23 @@ if ($PageOptions['UserPage']['ShowFilter']) {
 </tr>';
 }
 ?>
-         <tr class="table-center">   
+    
+    <tbody class="table-group-divider">
+        <tr>   
             <th class="col-md-1">#</th>
-            <th class="col-md-1">Flag</th>
-            <th class="col-md-2">Callsign</th>
-            <th class="col-md-2">Suffix</th>
+            <th class="col-md-1">Land</th>
+            <th class="col-md-2">Rufzeichen</th>
+            <th class="col-md-2" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="Suffix, Rufzeichenerweiterung" data-bs-placement="left">Erweiterung</th>
             <th class="col-md-1">DPRS</th>
-            <th class="col-md-2">Via / Peer</th>
-            <th class="col-md-2">Last heard</th>
-            <th class="col-md-1"><img src="./img/ear.png" alt="Listening on" /></th>
+            <th class="col-md-2">Einstieg / Peer</th>
+            <th class="col-md-2">Zuletzt geh&ouml;rt</th>
+            <th class="col-md-1" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="OM/YL in Raum:" data-bs-placement="bottom"><img class="invert_img" src="./img/ear.png" alt="in Raum" /> Raum</th>
          </tr>
+    </tbody>
+    <tbody class="table-group-divider"> 
+        <tr><td colspan="8"></td></tr>
+    </tbody>
+    
 <?php
 
 $Reflector->LoadFlags();
@@ -116,7 +123,8 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
     if ($ShowThisStation) {
 
         echo '
-      <tr class="table-center">
+        
+        <tr class="table-center text-white">
        <td>';
         if ($i == 0 && $Reflector->Stations[$i]->GetLastHeardTime() > (time() - 60)) {
             echo '<img src="./img/tx.gif" style="margin-top:3px;" height="20"/>';
@@ -130,12 +138,12 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
 
         list ($Flag, $Name) = $Reflector->GetFlag($Reflector->Stations[$i]->GetCallSign());
         if (file_exists("./img/flags/" . $Flag . ".png")) {
-            echo '<a href="#" class="tip"><img src="./img/flags/' . $Flag . '.png" class="table-flag" alt="' . $Name . '"><span>' . $Name . '</span></a>';
+            echo '<a href="#" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="' . $Name . '"><img src="./img/flags/' . $Flag . '.png" alt="' . $Name . '"></a>';
         }
         echo '</td>
-   <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
+   <td><a href="https://www.qrz.com/db/' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="ps-1 nav-link" target="_qrz" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="QRZ?" data-bs-placement="left">' . $Reflector->Stations[$i]->GetCallsignOnly() . '</a></td>
    <td>' . $Reflector->Stations[$i]->GetSuffix() . '</td>
-   <td><a href="https://aprsdirect.de/views/overview.php?c=' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="pl" target="_blank"><img src="./img/sat.png" alt=""></a></td>
+   <td><a href="https://aprsdirect.de/views/overview.php?c=' . $Reflector->Stations[$i]->GetCallsignOnly() . '" class="ps-1 nav-link" target="_aprs" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="left" data-bs-title="QTH?"><img class="invert_img" src="./img/sat.png" alt=""></a></td>
    <td>' . $Reflector->Stations[$i]->GetVia();
         if ($Reflector->Stations[$i]->GetPeer() != $Reflector->GetReflectorName()) {
             echo ' / ' . $Reflector->Stations[$i]->GetPeer();
@@ -151,10 +159,9 @@ for ($i=0;$i<$Reflector->StationCount();$i++) {
 }
 
 ?> 
- 
       </table>
    </div>
-   <div class="col-md-3">
+   <div class="col-md-3 pt-5">
       <table class="table table-striped table-hover">
          <?php 
 
@@ -164,16 +171,16 @@ echo '<tr>';
 for ($i=0;$i<count($Modules);$i++) {
    
    if (isset($PageOptions['ModuleNames'][$Modules[$i]])) {
-      echo '<th>'.$PageOptions['ModuleNames'][$Modules[$i]];
+      echo '<th class="text-white">'.$PageOptions['ModuleNames'][$Modules[$i]];
        if (trim($PageOptions['ModuleNames'][$Modules[$i]]) != "") {
-           echo '<br />';
+           echo '<br />Raum:&nbsp;';
        }
-      echo $Modules[$i].'</th>';
+      echo $Modules[$i].' (Link-Befehl: "XLX409' .$Modules[$i]. 'L")</th>';
    }
    else {
    echo '
   
-      <th>'.$Modules[$i].'</th>';
+      <th class="text-white">'.$Modules[$i].'</th>';
    }
 }
 
@@ -184,7 +191,7 @@ $GlobalPositions = array();
 for ($i=0;$i<count($Modules);$i++) {
     
    $Users = $Reflector->GetNodesInModulesByID($Modules[$i]);
-   echo '<td><table class="table table-hover">';
+   echo '<td><table class="table table-hover text-white">';
 
    $UserCheckedArray = array();
    
@@ -192,7 +199,7 @@ for ($i=0;$i<count($Modules);$i++) {
        $Displayname = $Reflector->GetCallsignAndSuffixByID($Users[$j]);
       echo '
             <tr>
-               <td><a href="https://aprsdirect.de/views/overview.php?c='.$Displayname.'" class="pl" target="_blank">'.$Displayname.'</a> </td>
+               <td><a data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-title="QTH?" data-bs-placement="left" href="https://aprsdirect.de/views/overview.php?c='.$Displayname.'" class="ps-1 nav-link text-white" target="_aprs">'.$Displayname.'</a> </td>
             </tr>';
       $UserCheckedArray[] = $Users[$j];
    }
