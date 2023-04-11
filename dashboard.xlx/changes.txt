@@ -1,4 +1,4 @@
-This version is a major releas for the XLX-dashboard!
+This version is a major release for the XLX-dashboard!
 xlx db v3.0
   - Upgraded framework to bootstrap 5.2 (from 3.x)
   - Darkmode
