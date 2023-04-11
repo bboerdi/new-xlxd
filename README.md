@@ -53,8 +53,8 @@ sudo apt install php-mysql mariadb-server mariadb-client
 ### Download the repository and enter the directory
 
 ```bash
-git clone https://github.com/bboerdi/new-xlxd.git
-cd new-xlxd
+git clone https://github.com/bboerdi/new-xlxd-w-new-xlx-dashboard.git
+cd new-xlxd-w-new-xlx-dashboard
 ```
 
 ### Create and edit your blacklist, whitelist and linking files
