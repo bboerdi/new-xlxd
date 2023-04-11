@@ -1,7 +1,7 @@
 ﻿# XLXD (or XRFD)
 
-Intro: This "dashboard release 3.x" is a fork from N7TAE's. Within this fork, only the dashboard was improved. The xlxd and ambed itself of new-xlxd is still the same!
-Changes to the dashboard of this version in short:
+Intro: This xlxd is a fork from N7TAE's new-xlxd! Within this fork, only the XLX-dashboard was improved. The xlxd, ambed and xrf-dashboard are still the original new-xlxd (N7TAE) ones!
+Changes/improvements to the XLX-dashboard of this version (3.x) are:
   - Upgraded framework to bootstrap 5.2 (from 3.x)
   - Darkmode
   - Added Modules-Page (so list all active modules of the reflector with optional description of each module)
