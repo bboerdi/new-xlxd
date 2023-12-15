@@ -13,6 +13,7 @@ class xReflector {
    private $CallingHomeDashboardURL = null;
    private $CallingHomeServerURL    = null;
    private $ReflectorName           = null;
+   private $ReflectorLinkName       = null;
    private $ServiceUptime           = null;
    private $ProcessIDFile           = null;
    private $XMLContent              = null;
@@ -49,6 +50,7 @@ class xReflector {
          }
          
          $this->ReflectorName = "XLX".$this->ServiceName;
+         $this->$ReflectorLinkName = "DCS".$this->ServiceName;
          
          $LinkedPeersName = "XLX".$this->ServiceName."  linked peers";
          $LinkedNodesName = "XLX".$this->ServiceName."  linked nodes";

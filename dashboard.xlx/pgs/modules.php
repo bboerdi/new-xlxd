@@ -34,7 +34,7 @@ $ModulesCount = count($PageOptions['ModuleNames']);
 $cnt = 0;
 foreach($Modules as $ModuleKey => $ModuleInfo) {
   $cnt++;
-  echo "<tr><td class='text-white'>$ModuleKey</td><td class='text-white'>UR-Call: \"$ReflectorName".$ModuleKey."L\"</td><td class='text-white'>$ModuleInfo</td></tr>";
+  echo "<tr><td class='text-white'>$ModuleKey</td><td class='text-white'>UR-Call: \"$ReflectorLinkName".$ModuleKey."L\"</td><td class='text-white'>$ModuleInfo</td></tr>";
 }
 
 
