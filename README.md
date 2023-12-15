@@ -8,7 +8,7 @@ Changes/improvements to the XLX-dashboard of this version (3.x) are:
   - Added infobox below the menu. e.g. for example info-box or help for newbies (see reflector: https://xlx409.boerdi.at)
   - Added smartphone-compatibility
   - fixed "ambed" - ambed main.h needs to include <thread> - see update from the original new-xlxd (N7TAE) 
-  - Added "how-to-link-to-reflector-with-UR-CALL-paramater" on modules-page
+  - Added "ReflectorLinkURCALL"-hint for linking to this reflector via UR-CALL on your DStar-Device within ModulesPage on XLX-Dashboard
   
 
 The XLX Multiprotocol Gateway Reflector Server is part of the software system for a Digital Voice Network. The sources are published under GPL Licenses.

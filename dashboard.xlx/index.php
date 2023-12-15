@@ -76,6 +76,7 @@ if ($CallingHome['Active']) {
 }
 
 $ReflectorName = $Reflector->GetReflectorName();
+$ReflectorLinkURCALL = $Reflector->GetReflectorLinkURCALL();
 ?>
 <!DOCTYPE html>
 <html lang="de">
